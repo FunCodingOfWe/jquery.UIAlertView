@@ -3,4 +3,4 @@
 
 预览效果：https://funcodingofwe.github.io/jquery.UIAlertView/index.html
 
-![enter image description here](http://ouij63u76.bkt.clouddn.com/ios.gif)
+![ios](http://ouij63u76.bkt.clouddn.com/ios.gif)
