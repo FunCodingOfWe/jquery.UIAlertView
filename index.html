@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+    <head>
+    <title>html 仿IOS弹窗</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		
+        <link type="text/css" rel="stylesheet" href="css/uiAlertView-1.0.0.css" />
+        <script type="text/javascript" src="js/jquery.uiAlertView-1.0.0.js"></script>
+        <script type="text/javascript">
+
+            $(function() {
+        
+                // 弹出提示信息
+                $("#btn0").click(function() {
+                    $.alertView("弹出提示信息");
+                });
+                
+                // 自定义标题、按钮
+                $("#btn1").click(function() {
+					
+					var json = {
+						title:"标题",
+						msg:"自定义标题、按钮",
+						buttons:[
+							{ title:"Delete",color:"red",click:function(){alert("你点了Delete")} },
+							{ title:"Cancel",click:function(){alert("你点了Cancel")} }
+						]
+					}
+				
+                    $.alertView(json);
+                });
+                
+                // 定义多个按钮
+                $("#btn2").click(function() {
+				
+                    var json = {
+						title:"提示",
+						msg:"定义多个按钮，定义多个按钮，定义多个按钮，定义多个按钮",
+						buttons:[
+							{ title:"first",click:function(){alert("你点了first")} },
+							{ title:"second",click:function(){alert("你点了second")} },
+							{ title:"delete",color:"red" }
+						]
+					}
+				
+                    $.alertView(json);
+                });
+				
+				
+                
+                /*
+                 * 带文本框的弹窗
+                 */
+                // 带文本框的弹窗
+                $("#btn6").click(function(){
+                    var json = {
+						title:"标题",
+						msg:"请输入姓名",
+						input:{ type:"text", value:"张三" },
+						buttons:[
+							{ title:"OK",click:function(text){alert("您输入的是:" + text)} },
+							{ title:"Cancel" }
+						]
+					}
+				
+                    $.alertView(json);
+                });
+                
+                // 密码输入框
+                $("#btn7").click(function(){
+                    var json = {
+						title:"标题",
+						msg:"请输入密码",
+						input:{ type:"password", placeholder:"请输入密码" },
+						buttons:[
+							{ title:"OK",click:function(text){alert("您输入的是:" + text)} },
+							{ title:"Cancel" }
+						]
+					}
+				
+                    $.alertView(json);
+                });
+                
+                // 手动关闭弹窗
+                $("#btn11").click(function(){
+                	var json = {
+						title:"标题",
+						msg:"密码输入123,手动关闭弹窗",
+						input:{ type:"password", placeholder:"请输入密码" },
+						buttons:[
+							// 设置 autoClose:false 会禁止自动关闭弹窗
+							{ title:"OK", autoClose:false, click:
+								function(text,element){
+									if (text == "123") {
+										// 使用 $.closeView() 关闭弹窗
+										$.closeView();
+									}
+									else {
+										element.find("input").css("border","red solid 1px");
+									}
+								} 
+							},
+							{ title:"Cancel" }
+						]
+					}
+				
+                    $.alertView(json);
+                });
+				
+				// 禁用遮罩
+				$("#btn3").click(function() {
+				
+                    var json = {
+						msg:"禁用遮罩",
+						showMask: false // 设置 showMask=false，禁用遮罩
+					}
+				
+                    $.alertView(json);
+                });
+            })
+        </script>
+    </head>
+    <body>
+        <h3 style="text-align: center;">仿IOS风格弹窗</h3>
+        <pre>
+			<a id="btn0" href="#">弹出提示信息</a><br>
+			<a id="btn1" href="#">自定义标题、按钮</a><br>
+			<a id="btn2" href="#">定义多个按钮</a><br><br>
+			
+			<a id="btn6" href="#">带文本框的弹窗</a><br>
+			<a id="btn7" href="#">密码输入框 </a><br>
+			
+			<a id="btn11" href="#">手动关闭弹窗</a><br>
+			<a id="btn3" href="#">禁用遮罩</a><br><br>
+        </pre>
+	</body>
+</html>
